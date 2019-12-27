@@ -130,6 +130,7 @@
     </Compile>
     <Compile Include="Models\AccountBindingModel.cs" />
     <Compile Include="Models\ApiHelper.cs" />
+    <Compile Include="Models\DisplayUserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +170,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\About.cshtml" />
+    <Content Include="Views\Account\User.cshtml" />
     <Content Include="Views\Account\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
