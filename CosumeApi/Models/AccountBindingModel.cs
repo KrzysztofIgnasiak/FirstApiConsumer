@@ -5,9 +5,8 @@ using System.Web;
 
 namespace CosumeApi.Models
 {
-    public class AccountBindingModel
-    {
-        public class DisplayBindingModel
+    
+        public class AccountDisplayBindingModel
         {
             public string NameOfUser { get; set; }
             public string Surname { get; set; }
@@ -26,5 +25,5 @@ namespace CosumeApi.Models
             public DateTime? DateofBirth { get; set; }
             public string Email { get; set; }
         }
-    }
+    
 }
