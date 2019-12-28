@@ -45,7 +45,35 @@ namespace CosumeApi.Controllers
             return View(Company);
         }
 
-        // GET :Company/Delete
+        // POSt : Company
+        
+        public ActionResult CreateCompany()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateCompany(CompanyAddBindingModel NewCompany)
+        {
+            var postTask = ApiHelper.ApiClient.PostAsJsonAsync<CompanyAddBindingModel>("NewCompany", NewCompany);
+            postTask.Wait();
+
+            var result = postTask.Result;
+
+            if (result.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Companies");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+                return View("NewCompany");
+            }
+        }
+
+
+      
+        // DELETE :Company/Delete
         public async Task<ActionResult> Delete()
         {
             HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("Company/1");
