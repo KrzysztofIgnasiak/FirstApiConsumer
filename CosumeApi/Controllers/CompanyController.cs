@@ -104,7 +104,7 @@ namespace CosumeApi.Controllers
                 if (result.IsSuccessStatusCode)
                 {
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Companies");
                 }
             }
             return View(Company);
@@ -125,7 +125,7 @@ namespace CosumeApi.Controllers
             }
             else
             {
-                return View("Companies");
+                return RedirectToAction("Companies");
             }
 
 
