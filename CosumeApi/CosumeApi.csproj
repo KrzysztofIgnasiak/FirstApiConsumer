@@ -128,9 +128,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountBindingModel.cs" />
+    <Compile Include="Models\BindingModels\AccountBindingModel.cs" />
     <Compile Include="Models\ApiHelper.cs" />
-    <Compile Include="Models\DisplayUserViewModel.cs" />
+    <Compile Include="Models\BindingModels\CompanyBindingModel.cs" />
+    <Compile Include="Models\ViewModels\DisplayUserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
