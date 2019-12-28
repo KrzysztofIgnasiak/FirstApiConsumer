@@ -172,15 +172,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\About.cshtml" />
     <Content Include="Views\Account\User.cshtml" />
     <Content Include="Views\Account\Users.cshtml" />
     <Content Include="Views\Account\Unauthorized.cshtml" />
     <Content Include="Views\Account\NotFound.cshtml" />
+    <Content Include="Views\Company\Companies.cshtml" />
+    <Content Include="Views\Company\Company.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Company\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

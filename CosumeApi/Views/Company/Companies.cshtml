@@ -1,0 +1,19 @@
+﻿@model CosumeApi.Models.ViewModels.DisplayCompanyViewModel
+
+@{
+    ViewBag.Title = "Companies";
+}
+
+<h2>Companies</h2>
+<ul>
+    @foreach (var Company in Model.Companies)
+    {
+        <li>@Company.Name</li>
+        <li>@Company.Nip</li>
+        <li>@Company.IdustryName</li>
+        <li>@Company.IndustryId</li>
+        <li>@Company.City</li>
+        <li>@Company.Address</li>
+    
+</ul>
+

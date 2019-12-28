@@ -14,7 +14,7 @@ namespace CosumeApi.Controllers
     public class CompanyController : Controller
     {
         // GET: Companies
-        public async Task<ActionResult> Users()
+        public async Task<ActionResult> Companies()
         {
             HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("Company");
             if (response.StatusCode == HttpStatusCode.Unauthorized)
@@ -30,11 +30,11 @@ namespace CosumeApi.Controllers
             }
             else
             {
-                return View();
+                return View("SomethingWrong");
             }
         }
         // GET: Company
-        public async Task<ActionResult> User()
+        public async Task<ActionResult> Company()
         {
             CompanyViewPublicModel Company = null;
             HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("Company/1");
@@ -64,4 +64,5 @@ namespace CosumeApi.Controllers
 
 
         }
+    }
 }
