@@ -71,7 +71,8 @@ namespace CosumeApi.Controllers
             }
             else
             {
-                return View("Users");
+                return RedirectToAction("Users");
+                //return View("Users");
             }
 
 
