@@ -41,8 +41,20 @@ namespace CosumeApi.Controllers
             if (response.IsSuccessStatusCode)
             {
                 User = await response.Content.ReadAsAsync<AccountDisplayBindingModel>();
+                return View(User);
             }
-            return View(User);
+            else if(response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                return View("Unauthorized");
+            }
+            else if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                return View("NotFound");
+            }
+            else
+            {
+                return View("SomethingWrong");
+            }
         }
 
         // GET :Account/Delete
@@ -55,7 +67,7 @@ namespace CosumeApi.Controllers
             }
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
-                return View("Not Found");
+                return View("NotFound");
             }
             else
             {
