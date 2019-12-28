@@ -29,7 +29,7 @@ namespace CosumeApi.Controllers
             }
             else
             {
-                return View();
+                return View("SomethingWorng");
             } 
         }
 
