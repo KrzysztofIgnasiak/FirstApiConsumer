@@ -71,10 +71,48 @@ namespace CosumeApi.Controllers
             }
         }
 
+        // POST : Company
+        public ActionResult UpdateCompany(int Id)
+        {
+            CompanyUpdateBindingModel Company = new CompanyUpdateBindingModel();
+            var responseTask = ApiHelper.ApiClient.GetAsync(""+ Id.ToString());
+            responseTask.Wait();
 
-      
-        // DELETE :Company/Delete
-        public async Task<ActionResult> Delete()
+            var result = responseTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<CompanyUpdateBindingModel>();
+                readTask.Wait();
+
+                Company = readTask.Result;
+            }
+            return View(Company);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateCompany(CompanyUpdateBindingModel Company)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:64189/api/student");
+
+                //HTTP POST
+                var putTask = client.PutAsJsonAsync<CompanyUpdateBindingModel>("Company", Company);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("Index");
+                }
+            }
+            return View(Company);
+        }
+    
+
+            // DELETE :Company/Delete
+            public async Task<ActionResult> Delete()
         {
             HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("Company/1");
             if (response.StatusCode == HttpStatusCode.Unauthorized)
