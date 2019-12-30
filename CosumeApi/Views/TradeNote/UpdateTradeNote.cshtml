@@ -27,6 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CompanyId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                <a href="~/Views/TradeNote/UpdateTradeNote.cshtml">~/Views/TradeNote/UpdateTradeNote.cshtml</a>
                 @Html.EditorFor(model => model.CompanyId, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
             </div>
@@ -41,5 +42,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "TradeNote")
 </div>
