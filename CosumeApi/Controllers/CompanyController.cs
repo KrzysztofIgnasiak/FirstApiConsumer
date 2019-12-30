@@ -105,18 +105,21 @@ namespace CosumeApi.Controllers
             return View(Company);
         }
 
-        [HttpPut]
+        [HttpPost]
         public ActionResult UpdateCompany(CompanyUpdateBindingModel Company)
         {
            
                 var putTask = ApiHelper.ApiClient.PutAsJsonAsync<CompanyUpdateBindingModel>("Company/" +Company.Id.ToString(), Company);
                 putTask.Wait();
-
                 var result = putTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
 
                     return RedirectToAction("Companies");
+                }
+                else
+                {
+                return View("Error");
                 }
             
             return View(Company);
