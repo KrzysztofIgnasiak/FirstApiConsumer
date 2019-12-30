@@ -14,9 +14,15 @@ namespace CosumeApi.Controllers
 {
     public class TradeNoteController : Controller
     {
+        int? LastCompany { get; set; }
         //GET : TradeNote/1
-        public async Task<ActionResult> TradeNotes(int Id)
+        public async Task<ActionResult> TradeNotes(int? Id)
         {
+            if(Id == null)
+            {
+                Id = LastCompany;
+            }
+            LastCompany = Id;
             HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("TradeNote/" +Id.ToString());
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
