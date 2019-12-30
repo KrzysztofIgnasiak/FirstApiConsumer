@@ -132,6 +132,7 @@
     <Compile Include="Models\BindingModels\AccountBindingModel.cs" />
     <Compile Include="Models\ApiHelper.cs" />
     <Compile Include="Models\BindingModels\CompanyBindingModel.cs" />
+    <Compile Include="Models\BindingModels\TradeNoteBindingModel.cs" />
     <Compile Include="Models\ViewModels\DisplayCompanyViewModel.cs" />
     <Compile Include="Models\ViewModels\DisplayUserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
