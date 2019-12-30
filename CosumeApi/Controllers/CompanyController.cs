@@ -21,6 +21,10 @@ namespace CosumeApi.Controllers
             {
                 return View("Unauthorized");
             }
+            if(response.StatusCode == HttpStatusCode.NotFound)
+            {
+                return View("NotFound");
+            }
             if (response.IsSuccessStatusCode)
             {
                 DisplayCompanyViewModel Model = new DisplayCompanyViewModel();
@@ -37,12 +41,24 @@ namespace CosumeApi.Controllers
         public async Task<ActionResult> Company()
         {
             CompanyViewPublicModel Company = null;
-            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("Company/1");
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("Company/5");
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                return View("Unauthorized");
+            }
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                return View("NotFound");
+            }
             if (response.IsSuccessStatusCode)
             {
                 Company = await response.Content.ReadAsAsync<CompanyViewPublicModel>();
+                return View(Company);
             }
-            return View(Company);
+           else
+            {
+                return View("SomethingWrong");
+            }
         }
 
         // POSt : Company/Create
