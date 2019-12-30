@@ -109,7 +109,7 @@ namespace CosumeApi.Controllers
         public ActionResult UpdateCompany(CompanyUpdateBindingModel Company)
         {
            
-                var putTask = ApiHelper.ApiClient.PutAsJsonAsync<CompanyUpdateBindingModel>("Company/4", Company);
+                var putTask = ApiHelper.ApiClient.PutAsJsonAsync<CompanyUpdateBindingModel>("Company/" +Company.Id.ToString(), Company);
                 putTask.Wait();
 
                 var result = putTask.Result;
