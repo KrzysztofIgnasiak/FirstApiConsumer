@@ -70,5 +70,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "UpdateCompany", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Companies")
+    @Html.ActionLink("Back to List", "Companies")|
+    @Html.ActionLink("Delete", "DeleteCompany",new { id = Model.Id } )|
 </p>

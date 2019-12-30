@@ -124,7 +124,7 @@ namespace CosumeApi.Controllers
     
 
             // DELETE :Company/Delete
-            public async Task<ActionResult> Delete(int Id)
+            public async Task<ActionResult> DeleteCompany(int Id)
         {
             HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("Company/" +Id.ToString());
             if (response.StatusCode == HttpStatusCode.Unauthorized)
