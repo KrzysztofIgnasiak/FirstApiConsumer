@@ -193,10 +193,12 @@
     <Content Include="Views\TradeNote\UpdateTradeNote.cshtml" />
     <Content Include="Views\TradeNote\TradeNotes.cshtml" />
     <Content Include="Views\Industry\CreateIndustry.cshtml" />
+    <Content Include="Views\ContactPerson\ContactPerson.cshtml" />
+    <Content Include="Views\ContactPerson\CreateContactPerson.cshtml" />
+    <Content Include="Views\ContactPerson\UpdateContactPerson.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ContactPerson\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
