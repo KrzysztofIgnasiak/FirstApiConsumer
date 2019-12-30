@@ -174,11 +174,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\User.cshtml" />
     <Content Include="Views\Account\Users.cshtml" />
-    <Content Include="Views\GeneralViews\Unauthorized.cshtml" />
-    <Content Include="Views\GeneralViews\NotFound.cshtml" />
+    <Content Include="Views\Shared\Unauthorized.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Company\Companies.cshtml" />
     <Content Include="Views\Company\Company.cshtml" />
-    <Content Include="Views\GeneralViews\SomethingWrong.cshtml" />
+    <Content Include="Views\Shared\SomethingWrong.cshtml" />
     <Content Include="Views\Company\CreateCompany.cshtml" />
     <Content Include="Views\Company\UpdateCompany.cshtml" />
   </ItemGroup>

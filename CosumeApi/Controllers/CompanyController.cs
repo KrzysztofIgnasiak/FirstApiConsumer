@@ -38,10 +38,10 @@ namespace CosumeApi.Controllers
             }
         }
         // GET: Company/1
-        public async Task<ActionResult> Company()
+        public async Task<ActionResult> Company(int Id)
         {
             CompanyViewPublicModel Company = null;
-            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("Company/5");
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("Company/" +Id.ToString());
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return View("Unauthorized");
