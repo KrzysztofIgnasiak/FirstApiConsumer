@@ -13,7 +13,7 @@ namespace CosumeApi.Controllers
 {
     public class CompanyController : Controller
     {
-        // GET: Companies
+        // GET: Company
         public async Task<ActionResult> Companies()
         {
             HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("Company");
@@ -33,7 +33,7 @@ namespace CosumeApi.Controllers
                 return View("SomethingWrong");
             }
         }
-        // GET: Company
+        // GET: Company/1
         public async Task<ActionResult> Company()
         {
             CompanyViewPublicModel Company = null;
@@ -45,7 +45,7 @@ namespace CosumeApi.Controllers
             return View(Company);
         }
 
-        // POSt : Company
+        // POSt : Company/Create
         
         public ActionResult CreateCompany()
         {
@@ -71,7 +71,7 @@ namespace CosumeApi.Controllers
             }
         }
 
-        // POST : Company
+        // POST : Company/Update
         public ActionResult UpdateCompany(int Id)
         {
             CompanyUpdateBindingModel Company = new CompanyUpdateBindingModel();
