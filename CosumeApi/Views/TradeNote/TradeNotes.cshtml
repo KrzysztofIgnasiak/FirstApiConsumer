@@ -1,0 +1,13 @@
+﻿@model CosumeApi.Models.ViewModels.TradeNoteViewModel
+
+@{
+    ViewBag.Title = "TradeNotes";
+}
+
+<h2>TradeNotes</h2>
+@foreach (var TradeNote in Model.TradeNotes)
+{
+    <li>@TradeNote.Id</li>
+    <li>@TradeNote.Text</li>
+    <li>@TradeNote.UserId</li>
+}

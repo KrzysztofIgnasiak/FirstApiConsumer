@@ -69,14 +69,14 @@ namespace CosumeApi.Controllers
             else
             {
                 ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-                return View("NewCompany");
+                return View("NewCompany");// z tym coś trzeba zrobić
             }
         }
 
-        // PUT : Company/Update
+        // PUT : TradeNote/Update
         public ActionResult UpdateTradeNote(int Id)
         {
-            TradeNoteAddBindingModel Company = new TradeNoteAddBindingModel();
+            TradeNoteAddBindingModel TradeNote = new TradeNoteAddBindingModel();
             var responseTask = ApiHelper.ApiClient.GetAsync("TradeNote/" + Id.ToString());
             responseTask.Wait();
 
@@ -86,9 +86,9 @@ namespace CosumeApi.Controllers
                 var readTask = result.Content.ReadAsAsync<TradeNoteAddBindingModel>();
                 readTask.Wait();
 
-                Company = readTask.Result;
+                TradeNote = readTask.Result;
             }
-            return View(Company);
+            return View(TradeNote);
         }
 
         [HttpPost]
