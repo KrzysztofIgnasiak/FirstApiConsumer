@@ -61,7 +61,7 @@ namespace CosumeApi.Controllers
             }
         }
 
-        // POSt : Company/Create
+        // POST : Company/Create
         
         public ActionResult CreateCompany()
         {
@@ -87,7 +87,7 @@ namespace CosumeApi.Controllers
             }
         }
 
-        // POST : Company/Update
+        // PUT : Company/Update
         public ActionResult UpdateCompany(int Id)
         {
             CompanyUpdateBindingModel Company = new CompanyUpdateBindingModel();
@@ -105,7 +105,7 @@ namespace CosumeApi.Controllers
             return View(Company);
         }
 
-        [HttpPost]
+        [HttpPut]
         public ActionResult UpdateCompany(CompanyUpdateBindingModel Company)
         {
             using (var client = new HttpClient())
