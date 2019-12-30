@@ -17,6 +17,7 @@ namespace CosumeApi.Models
 
     public class CompanyUpdateBindingModel
     {
+       public int Id { get; set; }
         public string Name { get; set; }
         public int? Nip { get; set; }
         public int? IndustryId { get; set; }

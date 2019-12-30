@@ -71,7 +71,7 @@ namespace CosumeApi.Controllers
         [HttpPost]
         public ActionResult CreateCompany(CompanyAddBindingModel NewCompany)
         {
-            var postTask = ApiHelper.ApiClient.PostAsJsonAsync<CompanyAddBindingModel>("NewCompany", NewCompany);
+            var postTask = ApiHelper.ApiClient.PostAsJsonAsync<CompanyAddBindingModel>("Company", NewCompany);
             postTask.Wait();
 
             var result = postTask.Result;
@@ -91,7 +91,7 @@ namespace CosumeApi.Controllers
         public ActionResult UpdateCompany(int Id)
         {
             CompanyUpdateBindingModel Company = new CompanyUpdateBindingModel();
-            var responseTask = ApiHelper.ApiClient.GetAsync(""+ Id.ToString());
+            var responseTask = ApiHelper.ApiClient.GetAsync("Company/"+ Id.ToString());
             responseTask.Wait();
 
             var result = responseTask.Result;
@@ -108,12 +108,8 @@ namespace CosumeApi.Controllers
         [HttpPut]
         public ActionResult UpdateCompany(CompanyUpdateBindingModel Company)
         {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://localhost:64189/api/student");
-
-                //HTTP POST
-                var putTask = client.PutAsJsonAsync<CompanyUpdateBindingModel>("Company", Company);
+           
+                var putTask = ApiHelper.ApiClient.PutAsJsonAsync<CompanyUpdateBindingModel>("Company/4", Company);
                 putTask.Wait();
 
                 var result = putTask.Result;
@@ -122,15 +118,15 @@ namespace CosumeApi.Controllers
 
                     return RedirectToAction("Companies");
                 }
-            }
+            
             return View(Company);
         }
     
 
             // DELETE :Company/Delete
-            public async Task<ActionResult> Delete()
+            public async Task<ActionResult> Delete(int Id)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("Company/1");
+            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("Company/" +Id.ToString());
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return View("Unauthorized");
