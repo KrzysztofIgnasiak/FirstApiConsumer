@@ -126,6 +126,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IndustryController.cs" />
     <Compile Include="Controllers\TradeNoteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -188,6 +189,7 @@
     <Content Include="Views\TradeNote\CreateTradeNote.cshtml" />
     <Content Include="Views\TradeNote\UpdateTradeNote.cshtml" />
     <Content Include="Views\TradeNote\TradeNotes.cshtml" />
+    <Content Include="Views\Industry\CreateIndustry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
