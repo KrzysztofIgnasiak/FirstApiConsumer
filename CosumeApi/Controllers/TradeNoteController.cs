@@ -76,14 +76,14 @@ namespace CosumeApi.Controllers
         // PUT : TradeNote/Update
         public ActionResult UpdateTradeNote(int Id)
         {
-            TradeNoteAddBindingModel TradeNote = new TradeNoteAddBindingModel();
+            TradeNoteUpdateBindingModel TradeNote = new TradeNoteUpdateBindingModel();
             var responseTask = ApiHelper.ApiClient.GetAsync("TradeNote/" + Id.ToString());
             responseTask.Wait();
 
             var result = responseTask.Result;
             if (result.IsSuccessStatusCode)
             {
-                var readTask = result.Content.ReadAsAsync<TradeNoteAddBindingModel>();
+                var readTask = result.Content.ReadAsAsync<TradeNoteUpdateBindingModel>();
                 readTask.Wait();
 
                 TradeNote = readTask.Result;
