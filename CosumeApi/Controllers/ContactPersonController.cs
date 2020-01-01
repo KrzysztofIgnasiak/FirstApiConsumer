@@ -137,11 +137,11 @@ namespace CosumeApi.Controllers
             }
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
-                return View("Not Found");
+                return View("NotFound");
             }
             else
             {
-                return RedirectToAction("ContactPerson");
+                return RedirectToAction("ContactPeople");
             }
 
 
