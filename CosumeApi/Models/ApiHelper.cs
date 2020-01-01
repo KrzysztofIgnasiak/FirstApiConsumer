@@ -13,7 +13,7 @@ namespace CosumeApi.Models
 
         public static void InitializeClient()
         {
-            string token = " LUBsmJPpp2fncO-c_K2eCEJl0VYJ7vqwGXXTO4BMlwdp-ONpFRSq7KHoZ95jlfAe_4ML_INEpGd3hMXcN0QkmcV73PGdo9UpNagFBvIxPhWLcCo61NzL_whYTRl1Dn9sml4RAtC4F1vi_14_2_dgMafKv_VtvPvQ1YReQYUBmMI_yTvvS2ATTdMoMmDD6yq4tYf55AgPdTRZYDxIgSjPfx_I2P-Cms2uO5z960jrDyty5jrNn8YwWLV3TJ7GCv_Z9JWJEZ6qAA3p0JnKvW7rMuB-sOEFy98934UiUL_WyqSsZXPTSYy5hX5aWy6EL7Kscpi6N06D4o3oC1QEy7MSkRo7VUHZE8Gbnmf_8tb3lmOwj9DbL-SsI-tP-aLrdHfF_RTly-wBadZ3uJ3_iO5WrDFngbQCgA6LAQge6DDAAwxbvgRv_d0qIzLMWCkPSSE5zpw-rPPWmCxDjJ-9XgmWf7Yye-tW1Pfwe_lbfLvxq_cT-EmzRiZ9BPsdv_XXdloetEirQ1Xqit6OpeFICPbEhg";
+            string token = " 1MeXz0XxW2Cro_C8fqaoOcZ72SAElluEzjDQC6BjqSf9Uz0iv36ix6evs-6P_g_bMdMP5qvl2MDppmX-VGKcTfgAK9pT7MPuiMwka9ScKLoMmVyjOxY6pK0ozVyXDG2WeZ9N0s5MAtNqK8NdH9nVmFokeT6naLLdK2oYSY5AeFo4FGL_qa79Jgpg6TNZfKZ5NDyqO17WplG4kSG69xK5jl01AU51RAlHj1AMCVwQ2O3sv5HL1TWqpVhJI3EUThqv0R55nMPpwimRWdXoqITmbP6PtlfSgpF5sLlBsi7KcjEKzpmRK0REdiiqaqwZIgst3AyovfVl6IEk9nBmQvuJ4tVGDA7bRhR5qnGJ6AwlUu5ijR9965GNfgUHJyPULwCVKJwPJGT3tZ1Q5BcRV2Y0Jtii5fpAO2sYYo1J1mYI6NxWKAwD1tNFzmbcDOxtnSURVVMkdBNRS3RYLiq0edDvvfEf6pVUmmKwxTwauHtB9mFWknKFzQGz_GnNTmWu9Hp2P9EKKA2dKIUXq6VBWN5tWQ";
             //string token = "coś";
             ApiClient = new HttpClient();
             ApiClient.BaseAddress = new Uri("http://localhost:61512/api/");
