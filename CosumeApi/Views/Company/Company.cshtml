@@ -72,4 +72,9 @@
     @Html.ActionLink("Edit", "UpdateCompany", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Companies") |
     @Html.ActionLink("Delete", "DeleteCompany",new { id = Model.Id } )|
+    @Html.ActionLink("View TradeNotes", "TradeNotes","TradeNote",  routeValues: new {
+        Id= Model.Id
+        
+    },
+    htmlAttributes: null)|
 </p>
