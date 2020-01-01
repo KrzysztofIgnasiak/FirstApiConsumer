@@ -138,6 +138,7 @@
     <Compile Include="Models\BindingModels\ContactPersoBindingModel.cs" />
     <Compile Include="Models\BindingModels\IndustryBindingModel.cs" />
     <Compile Include="Models\BindingModels\TradeNoteBindingModel.cs" />
+    <Compile Include="Models\RedirectInfo.cs" />
     <Compile Include="Models\ViewModels\ContactPeopleViewModel.cs" />
     <Compile Include="Models\ViewModels\DisplayCompanyViewModel.cs" />
     <Compile Include="Models\ViewModels\DisplayUserViewModel.cs" />
