@@ -131,6 +131,41 @@ namespace CosumeApi.Controllers
             }
 
         }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(AccountAddBindingModel NewUser)
+        {
+            var content = new FormUrlEncodedContent(new[]
+           {
+                 new KeyValuePair<string, string>("username", NewUser.UserName),
+                 new KeyValuePair<string, string>("NameOfUser", NewUser.NameOfUser),
+                 new KeyValuePair<string, string>("Password", NewUser.Password),
+                 new KeyValuePair<string, string>("ConfirmPassword", NewUser.ConfirmPasword),
+                 new KeyValuePair<string, string>("Surname", NewUser.Surname),
+                 new KeyValuePair<string, string>("DateOfBirth", NewUser.DateofBirth.ToString()),
+                 new KeyValuePair<string, string>("Email", NewUser.Email),
+            });
+            var responseTask = ApiHelper.ApiClient.PostAsync("api/account/register", content);
+            responseTask.Wait();
+
+            var result = responseTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+
+                return RedirectToAction("Users");
+            }
+            else
+            {
+                return View("Error");
+            }
+
+        }
+
         // GET :Account/Delete
         public async Task<ActionResult> Delete(string Id)
         {
