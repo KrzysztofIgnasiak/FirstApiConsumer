@@ -200,6 +200,7 @@
     <Content Include="Views\ContactPerson\ContactPeople.cshtml" />
     <Content Include="Views\TradeNote\TradeNote.cshtml" />
     <Content Include="Views\Account\UpdateUser.cshtml" />
+    <Content Include="Views\Account\LogIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

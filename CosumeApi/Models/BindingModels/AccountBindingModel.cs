@@ -5,6 +5,15 @@ using System.Web;
 
 namespace CosumeApi.Models
 {
+    public class TokenBindingModel
+    {
+        public string access_token { get; set; }
+    }
+    public class LogInBindingModel
+    {
+        public string username { get; set; }
+        public string password { get; set; }
+    }
     
         public class AccountDisplayBindingModel
         {
