@@ -140,6 +140,7 @@
     <Compile Include="Models\BindingModels\IndustryBindingModel.cs" />
     <Compile Include="Models\BindingModels\RoleBindingModel.cs" />
     <Compile Include="Models\BindingModels\TradeNoteBindingModel.cs" />
+    <Compile Include="Models\BindingModels\UserRoleBindingModel.cs" />
     <Compile Include="Models\RedirectInfo.cs" />
     <Compile Include="Models\ViewModels\ContactPeopleViewModel.cs" />
     <Compile Include="Models\ViewModels\DisplayCompanyViewModel.cs" />
@@ -207,6 +208,8 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Role\Roles.cshtml" />
     <Content Include="Views\Role\CreateRole.cshtml" />
+    <Content Include="Views\Role\AddUserToRole.cshtml" />
+    <Content Include="Views\Role\RemoveUserFromRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

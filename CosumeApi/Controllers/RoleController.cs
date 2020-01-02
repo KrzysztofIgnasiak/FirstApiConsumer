@@ -57,6 +57,55 @@ namespace CosumeApi.Controllers
             }
         }
 
+        public ActionResult AddUserToRole()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddUserToRole(UserRoleBindingModel Model)
+        {
+            var postTask = ApiHelper.ApiClient.PostAsJsonAsync<UserRoleBindingModel>("api/Role/AddUserToRole", Model);
+            postTask.Wait();
+
+            var result = postTask.Result;
+
+            if (result.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Roles");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+                return View();
+            }
+        }
+
+        public ActionResult RemoveUserFromRole()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RemoveUserFromRole(UserRoleBindingModel Model)
+        {
+            //var parameters = new Dictionary<string, string> { { "id", Model.UserId }, { "RoleName", Model.RoleName } };
+            //var encodedContent = new FormUrlEncodedContent(parameters);
+            var postTask = ApiHelper.ApiClient.PostAsJsonAsync<UserRoleBindingModel>("api/Role/RemoveUserFromRole", Model);
+            postTask.Wait();
+
+            var result = postTask.Result;
+
+            if (result.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Roles");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+                return View();
+            }
+        }
+
 
     }
 }
