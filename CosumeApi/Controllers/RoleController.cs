@@ -24,7 +24,7 @@ namespace CosumeApi.Controllers
             if (response.IsSuccessStatusCode)
             {
                 RoleViewModel Model = new RoleViewModel();
-                Model.Roles = await response.Content.ReadAsAsync<List<RoleBindingModel>>();
+                Model.Roles = await response.Content.ReadAsAsync<List<RoleViewBindingModel>>();
                 //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
                 return View(Model);
             }
@@ -33,5 +33,30 @@ namespace CosumeApi.Controllers
                 return View("SomethingWorng");
             }
         }
+      public ActionResult CreateRole()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateRole(RoleAddBindingModel NewRole)
+        {
+            var postTask = ApiHelper.ApiClient.PostAsJsonAsync<RoleAddBindingModel>("api/Role/Create", NewRole);
+            postTask.Wait();
+
+            var result = postTask.Result;
+
+            if (result.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Roles");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+                return View("NewRole");
+            }
+        }
+
+
     }
 }

@@ -8,6 +8,6 @@ namespace CosumeApi.Models.ViewModels
 {
     public class RoleViewModel
     {
-        public List<RoleBindingModel> Roles;
+        public List<RoleViewBindingModel> Roles;
     }
 }
