@@ -39,6 +39,36 @@ namespace CosumeApi.Controllers
                 return View("SomethingWrong");
             }
         }
+        public async Task <ActionResult> ContactPeopleBySurnameAsync()
+        {
+            return View();
+        }
+        [HttpGet]
+        public async Task<ActionResult> ContactPeopleBySurnameAsync(ContactPersonBySurnameBindingModel Model)
+        {
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/ContactPerson/BySurname/"+ Model.Surname);
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                return View("Unauthorized");
+            }
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                return View("NotFound");
+            }
+            if (response.IsSuccessStatusCode)
+            {
+                ContactPeopleViewModel People = new ContactPeopleViewModel();
+                People.ContactPeople = await response.Content.ReadAsAsync<List<ContactPersonGetBindingModel>>();
+                //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
+                return View("ContactPeople", People);
+            }
+            else
+            {
+                return View("SomethingWrong");
+            }
+
+        }
+
 
         // GET: ContactPerson/1
         public async Task<ActionResult> ContactPerson(int Id)

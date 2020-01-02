@@ -5,6 +5,10 @@ using System.Web;
 
 namespace CosumeApi.Models.BindingModels
 {
+    public class ContactPersonBySurnameBindingModel
+    {
+        public string Surname { get; set; }
+    }
     public class ContactPersonAddBindingModel
     {
         public string Name { get; set; }
