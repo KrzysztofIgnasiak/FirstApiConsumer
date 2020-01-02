@@ -9,4 +9,9 @@ namespace CosumeApi.Models.BindingModels
     {
         public string Name { get; set; }
     }
+
+    public class IndustrySearchBindingModel
+    {
+        public int Id { get; set; }
+    }
 }

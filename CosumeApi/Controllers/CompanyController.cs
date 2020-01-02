@@ -1,4 +1,5 @@
 ﻿using CosumeApi.Models;
+using CosumeApi.Models.BindingModels;
 using CosumeApi.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -60,9 +61,37 @@ namespace CosumeApi.Controllers
                 return View("SomethingWrong");
             }
         }
+        public async Task<ActionResult> GetCompaniesByIndustryAsync()
+        {
+            return View();
+        }
+        [HttpGet]
+        public async Task<ActionResult> GetCompaniesByIndustryAsync(IndustrySearchBindingModel Industry)
+        {
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/Company/ByIndustry/"+Industry.Id);
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                return View("Unauthorized");
+            }
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                return View("NotFound");
+            }
+            if (response.IsSuccessStatusCode)
+            {
+                DisplayCompanyViewModel Model = new DisplayCompanyViewModel();
+                Model.Companies = await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
+                //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
+                return View("Companies",Model);
+            }
+            else
+            {
+                return View("SomethingWrong");
+            }
+        }
 
         // POST : Company/Create
-        
+
         public ActionResult CreateCompany()
         {
             return View();

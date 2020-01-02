@@ -211,6 +211,7 @@
     <Content Include="Views\Role\AddUserToRole.cshtml" />
     <Content Include="Views\Role\RemoveUserFromRole.cshtml" />
     <Content Include="Views\ContactPerson\ContactPeopleBySurnameAsync.cshtml" />
+    <Content Include="Views\Company\GetCompaniesByIndustryAsync.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
