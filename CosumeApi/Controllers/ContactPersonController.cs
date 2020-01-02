@@ -43,10 +43,10 @@ namespace CosumeApi.Controllers
         {
             return View();
         }
-        [HttpGet]
+        [HttpPost]
         public async Task<ActionResult> ContactPeopleBySurnameAsync(ContactPersonBySurnameBindingModel Model)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/ContactPerson/BySurname/"+ Model.Surname);
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/ContactPerson/BySurname?Surname=" + Model.Surname);
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return View("Unauthorized");

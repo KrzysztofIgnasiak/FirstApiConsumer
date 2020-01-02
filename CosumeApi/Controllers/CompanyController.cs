@@ -65,7 +65,7 @@ namespace CosumeApi.Controllers
         {
             return View();
         }
-        [HttpGet]
+        [HttpPost]
         public async Task<ActionResult> GetCompaniesByIndustryAsync(IndustrySearchBindingModel Industry)
         {
             HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/Company/ByIndustry/"+Industry.Id);
