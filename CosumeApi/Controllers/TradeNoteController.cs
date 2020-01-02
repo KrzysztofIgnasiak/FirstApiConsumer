@@ -23,7 +23,7 @@ namespace CosumeApi.Controllers
                 Id = RedirectInfo.LastCompany;
             }
             RedirectInfo.LastCompany = Id;
-            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("TradeNote/" +Id.ToString());
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/TradeNote/" +Id.ToString());
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return View("Unauthorized");
@@ -49,7 +49,7 @@ namespace CosumeApi.Controllers
         // GET :TradeNote/Particular/1
         public async Task<ActionResult> TradeNote(int Id)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("TradeNote/Particular/?id=" + Id.ToString());
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/TradeNote/Particular/?id=" + Id.ToString());
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return View("Unauthorized");
@@ -83,7 +83,7 @@ namespace CosumeApi.Controllers
         [HttpPost]
         public ActionResult CreateTradeNote(TradeNoteAddBindingModel NewTradeNote)
         {
-            var postTask = ApiHelper.ApiClient.PostAsJsonAsync<TradeNoteAddBindingModel>("TradeNote", NewTradeNote);
+            var postTask = ApiHelper.ApiClient.PostAsJsonAsync<TradeNoteAddBindingModel>("api/TradeNote", NewTradeNote);
             postTask.Wait();
 
             var result = postTask.Result;
@@ -104,7 +104,7 @@ namespace CosumeApi.Controllers
         public ActionResult UpdateTradeNote(int Id)
         {
             TradeNoteUpdateBindingModel TradeNote = new TradeNoteUpdateBindingModel();
-            var responseTask = ApiHelper.ApiClient.GetAsync("TradeNote/" + Id.ToString());
+            var responseTask = ApiHelper.ApiClient.GetAsync("api/TradeNote/" + Id.ToString());
             responseTask.Wait();
 
             var result = responseTask.Result;
@@ -122,7 +122,7 @@ namespace CosumeApi.Controllers
         public ActionResult UpdateTradeNote(TradeNoteUpdateBindingModel TradeNote)
         {
 
-            var putTask = ApiHelper.ApiClient.PutAsJsonAsync<TradeNoteUpdateBindingModel>("TradeNote/" + TradeNote.Id.ToString(), TradeNote);
+            var putTask = ApiHelper.ApiClient.PutAsJsonAsync<TradeNoteUpdateBindingModel>("api/TradeNote/" + TradeNote.Id.ToString(), TradeNote);
             putTask.Wait();
             var result = putTask.Result;
             if (result.IsSuccessStatusCode)
@@ -141,7 +141,7 @@ namespace CosumeApi.Controllers
         // DELETE :TradeNote/Delete
         public async Task<ActionResult> DeleteTradeNote(int Id)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("TradeNote/" + Id.ToString());
+            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("api/TradeNote/" + Id.ToString());
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return View("Unauthorized");

@@ -16,7 +16,7 @@ namespace CosumeApi.Controllers
         // GET: Company
         public async Task<ActionResult> Companies()
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("Company");
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/Company");
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return View("Unauthorized");
@@ -41,7 +41,7 @@ namespace CosumeApi.Controllers
         public async Task<ActionResult> Company(int Id)
         {
             CompanyViewPublicModel Company = null;
-            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("Company/" +Id.ToString());
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/Company/" +Id.ToString());
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return View("Unauthorized");
@@ -71,7 +71,7 @@ namespace CosumeApi.Controllers
         [HttpPost]
         public ActionResult CreateCompany(CompanyAddBindingModel NewCompany)
         {
-            var postTask = ApiHelper.ApiClient.PostAsJsonAsync<CompanyAddBindingModel>("Company", NewCompany);
+            var postTask = ApiHelper.ApiClient.PostAsJsonAsync<CompanyAddBindingModel>("api/Company", NewCompany);
             postTask.Wait();
 
             var result = postTask.Result;
@@ -91,7 +91,7 @@ namespace CosumeApi.Controllers
         public ActionResult UpdateCompany(int Id)
         {
             CompanyUpdateBindingModel Company = new CompanyUpdateBindingModel();
-            var responseTask = ApiHelper.ApiClient.GetAsync("Company/"+ Id.ToString());
+            var responseTask = ApiHelper.ApiClient.GetAsync("api/Company/"+ Id.ToString());
             responseTask.Wait();
 
             var result = responseTask.Result;
@@ -109,7 +109,7 @@ namespace CosumeApi.Controllers
         public ActionResult UpdateCompany(CompanyUpdateBindingModel Company)
         {
            
-                var putTask = ApiHelper.ApiClient.PutAsJsonAsync<CompanyUpdateBindingModel>("Company/" +Company.Id.ToString(), Company);
+                var putTask = ApiHelper.ApiClient.PutAsJsonAsync<CompanyUpdateBindingModel>("api/Company/" +Company.Id.ToString(), Company);
                 putTask.Wait();
                 var result = putTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -129,7 +129,7 @@ namespace CosumeApi.Controllers
             // DELETE :Company/Delete
             public async Task<ActionResult> DeleteCompany(int Id)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("Company/" +Id.ToString());
+            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("api/Company/" +Id.ToString());
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return View("Unauthorized");

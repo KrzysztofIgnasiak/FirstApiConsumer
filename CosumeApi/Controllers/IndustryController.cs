@@ -19,7 +19,7 @@ namespace CosumeApi.Controllers
         [HttpPost]
         public ActionResult CreateCompany(IndustryBindingModel Industry)
         {
-            var postTask = ApiHelper.ApiClient.PostAsJsonAsync<IndustryBindingModel>("Industry", Industry);
+            var postTask = ApiHelper.ApiClient.PostAsJsonAsync<IndustryBindingModel>("api/Industry", Industry);
             postTask.Wait();
 
             var result = postTask.Result;

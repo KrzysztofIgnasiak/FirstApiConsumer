@@ -18,7 +18,7 @@ namespace CosumeApi.Controllers
         // GET: ContactPeople
         public async Task<ActionResult> ContactPeople()
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("ContactPerson");
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/ContactPerson");
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return View("Unauthorized");
@@ -44,7 +44,7 @@ namespace CosumeApi.Controllers
         public async Task<ActionResult> ContactPerson(int Id)
         {
             ContactPersonGetBindingModel ContactPerson = null;
-            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("ContactPerson/" + Id.ToString());
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/ContactPerson/" + Id.ToString());
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return View("Unauthorized");
@@ -74,7 +74,7 @@ namespace CosumeApi.Controllers
         [HttpPost]
         public ActionResult CreateContactPerson(ContactPersonGetBindingModel NewContactPerson)
         {
-            var postTask = ApiHelper.ApiClient.PostAsJsonAsync<ContactPersonGetBindingModel>("ContactPerson", NewContactPerson);
+            var postTask = ApiHelper.ApiClient.PostAsJsonAsync<ContactPersonGetBindingModel>("api/ContactPerson", NewContactPerson);
             postTask.Wait();
 
             var result = postTask.Result;
@@ -93,7 +93,7 @@ namespace CosumeApi.Controllers
         public ActionResult UpdateContactPerson(int Id)
         {
             ContactPersonUpdateBindingModel ContactPerson = new ContactPersonUpdateBindingModel();
-            var responseTask = ApiHelper.ApiClient.GetAsync("ContactPerson/" + Id.ToString());
+            var responseTask = ApiHelper.ApiClient.GetAsync("api/ContactPerson/" + Id.ToString());
             responseTask.Wait();
 
             var result = responseTask.Result;
@@ -111,7 +111,7 @@ namespace CosumeApi.Controllers
         public ActionResult UpdateContactPerson(ContactPersonUpdateBindingModel ContactPerson)
         {
 
-            var putTask = ApiHelper.ApiClient.PutAsJsonAsync("ContactPerson/" + ContactPerson.Id.ToString(), ContactPerson);
+            var putTask = ApiHelper.ApiClient.PutAsJsonAsync("api/ContactPerson/" + ContactPerson.Id.ToString(), ContactPerson);
             putTask.Wait();
             var result = putTask.Result;
             if (result.IsSuccessStatusCode)
@@ -130,7 +130,7 @@ namespace CosumeApi.Controllers
         // DELETE :ContactPerson/Delete
         public async Task<ActionResult> DeleteContactPerson(int Id)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("ContactPerson/" + Id.ToString());
+            HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("api/ContactPerson/" + Id.ToString());
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return View("Unauthorized");
