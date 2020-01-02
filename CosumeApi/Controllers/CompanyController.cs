@@ -68,7 +68,7 @@ namespace CosumeApi.Controllers
         [HttpPost]
         public async Task<ActionResult> GetCompaniesByIndustryAsync(IndustrySearchBindingModel Industry)
         {
-            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/Company/ByIndustry/"+Industry.Id);
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/Company/ByIndustry?IndustryId="+Industry.Id);
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 return View("Unauthorized");
