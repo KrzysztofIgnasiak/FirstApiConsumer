@@ -34,10 +34,10 @@ namespace CosumeApi.Controllers
         }
 
         // GET: Account/User
-        public async Task<ActionResult> User()
+        public async Task<ActionResult> User(string Id)
         {
             AccountDisplayBindingModel User = null;
-            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("Account/a4a20198-5cea-439a-99a4-8e4c01d6324a");
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("Account/" +Id);
             if (response.IsSuccessStatusCode)
             {
                 User = await response.Content.ReadAsAsync<AccountDisplayBindingModel>();
@@ -56,6 +56,44 @@ namespace CosumeApi.Controllers
                 return View("SomethingWrong");
             }
         }
+        // PUT : Account/Update
+        public ActionResult UpdateUser(string Id)
+        {
+            AccountSetBindingModel User = new AccountSetBindingModel();
+            var responseTask = ApiHelper.ApiClient.GetAsync("Account/" + Id);
+            responseTask.Wait();
+
+            var result = responseTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<AccountSetBindingModel>();
+                readTask.Wait();
+
+                User = readTask.Result;
+            }
+            return View(User);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateUser(AccountSetBindingModel User)
+        {
+
+            var putTask = ApiHelper.ApiClient.PutAsJsonAsync<AccountSetBindingModel>("Account/" + User.Id, User);
+            putTask.Wait();
+            var result = putTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+
+                return RedirectToAction("Users");
+            }
+            else
+            {
+                return View("Error");
+            }
+
+            return View(User);
+        }
+
 
         // GET :Account/Delete
         public async Task<ActionResult> Delete()
@@ -74,7 +112,6 @@ namespace CosumeApi.Controllers
                 return RedirectToAction("Users");
                 //return View("Users");
             }
-
 
         }
         // GET: Account/About
