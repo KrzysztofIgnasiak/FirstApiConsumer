@@ -46,6 +46,33 @@ namespace CosumeApi.Controllers
             }
         }
 
+        // GET :TradeNote/Particular/1
+        public async Task<ActionResult> TradeNote(int Id)
+        {
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("TradeNote/Particular/?id=" + Id.ToString());
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                return View("Unauthorized");
+            }
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                return View("NotFound");
+            }
+            if (response.IsSuccessStatusCode)
+            {
+                TradeNoteViewBindingModel Model = new TradeNoteViewBindingModel();
+                Model = await response.Content.ReadAsAsync<TradeNoteViewBindingModel>();
+                // Model.Companies= await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
+                //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
+                return View(Model);
+            }
+            else
+            {
+                return View("SomethingWrong");
+            }
+        }
+
+
         // POST : TradeNote/Create
 
         public ActionResult CreateTradeNote()

@@ -198,6 +198,7 @@
     <Content Include="Views\ContactPerson\CreateContactPerson.cshtml" />
     <Content Include="Views\ContactPerson\UpdateContactPerson.cshtml" />
     <Content Include="Views\ContactPerson\ContactPeople.cshtml" />
+    <Content Include="Views\TradeNote\TradeNote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

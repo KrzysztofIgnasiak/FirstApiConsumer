@@ -1,0 +1,35 @@
+﻿@model CosumeApi.Models.BindingModels.TradeNoteViewBindingModel
+
+@{
+    ViewBag.Title = "TradeNote";
+}
+
+<h2>TradeNote</h2>
+
+<div>
+    <h4>TradeNoteViewBindingModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "UpdateTradeNote", new { id = Model.Id }) |
+    @Html.ActionLink("Delete", "DeleteTradeNote", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "TradeNotes")
+</p>
