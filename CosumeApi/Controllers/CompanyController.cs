@@ -33,7 +33,15 @@ namespace CosumeApi.Controllers
                 //Model.Companies = await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
                 Companies = await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
                 //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
-                return View(Companies);
+                if(UserInfo.IsAdmin == true)
+                {
+                    return View(Companies);
+                }
+                else
+                {
+                    return View("CompaniesNormal");
+                }
+                
             }
             else
             {

@@ -27,7 +27,15 @@ namespace CosumeApi.Controllers
                 IEnumerable<AccountDisplayBindingModel> Users = null;
                 Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
                 //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
-                return View(Users);
+                if(UserInfo.IsAdmin == true)
+                {
+                    return View(Users);
+                }
+                else
+                {
+                    return View("UsersNormal");
+                }
+                
             }
             else
             {
