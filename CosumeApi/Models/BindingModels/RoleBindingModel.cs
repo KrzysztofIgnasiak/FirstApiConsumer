@@ -14,5 +14,9 @@ namespace CosumeApi.Models.BindingModels
     {
         public string Name { get; set; }
     }
+    public class IsAdminBindingModel
+    {
+        public bool IsAdmin { get; set; }
+    }
 
 }

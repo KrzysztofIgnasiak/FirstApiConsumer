@@ -1,13 +1,14 @@
-﻿using System;
+﻿using CosumeApi.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
-using CosumeApi.Models;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Http.Headers;
+using CosumeApi.Models.BindingModels;
 
 namespace CosumeApi.Controllers
 {
@@ -57,6 +58,32 @@ namespace CosumeApi.Controllers
                 return View("SomethingWrong");
             }
         }
+
+        //GET : Account/IsAdmin
+        public async Task<ActionResult> IsAdmin()
+        {
+            IsAdminBindingModel Model = new IsAdminBindingModel();
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/Role/IsAdmin");
+            if (response.IsSuccessStatusCode)
+            {
+                Model = await response.Content.ReadAsAsync<IsAdminBindingModel>();
+                UserInfo.IsAdmin = Model.IsAdmin;
+                return RedirectToAction("Users");
+            }
+            else if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                return View("Unauthorized");
+            }
+            else if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                return View("NotFound");
+            }
+            else
+            {
+                return View("SomethingWrong");
+            }
+        }
+
         // PUT : Account/Update
         public ActionResult UpdateUser(string Id)
         {
@@ -123,7 +150,7 @@ namespace CosumeApi.Controllers
                 ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); //give me json only
                 ApiHelper.ApiClient.DefaultRequestHeaders.Authorization
                               = new AuthenticationHeaderValue("Bearer", TokenBinding.access_token);
-                return RedirectToAction("Users");
+                return RedirectToAction("IsAdmin");
             }
             else
             {
