@@ -33,14 +33,9 @@ namespace CosumeApi.Controllers
          
                 ContactPeople = await response.Content.ReadAsAsync<List<ContactPersonGetBindingModel>>();
                 //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
-                if(UserInfo.IsAdmin == true)
-                {
-                    return View(ContactPeople);
-                }
-                else
-                {
-                    return View("ContactPeopleNormal");
-                }
+                
+                 return View(ContactPeople);
+              
             
             }
             else

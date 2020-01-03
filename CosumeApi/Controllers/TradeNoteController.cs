@@ -39,14 +39,10 @@ namespace CosumeApi.Controllers
                 TradeNotes = await response.Content.ReadAsAsync<List<TradeNoteViewBindingModel>>();
                 // Model.Companies= await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
                 //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
-                if (UserInfo.IsAdmin == true)
-                {
-                    return View(TradeNotes);
-                }
-                else
-                {
-                    return View("TradeNotesNormal");
-                }
+                
+                return View(TradeNotes);
+                
+                
             }
             else
             {
