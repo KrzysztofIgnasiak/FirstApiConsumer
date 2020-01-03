@@ -1,0 +1,20 @@
+﻿@model CosumeApi.Models.ViewModels.ContactPeopleViewModel
+
+@{
+    ViewBag.Title = "ContactPeople";
+}
+
+<h2>ContactPeople</h2>
+<ul>
+    @foreach (var Person in Model.ContactPeople)
+    {
+        <li>@Person.Name</li>
+        <li>@Person.Surname</li>
+        <li>@Person.Position</li>
+        <li>@Person.Phone</li>
+        <li>@Person.Mail</li>
+    }
+</ul>
+@Html.ActionLink("Add", "CreateContactPerson") |
+@Html.ActionLink("GetAll", "ContactPeople") |
+@Html.ActionLink("GetBySurname", "ContactPeopleBySurnameAsync") |

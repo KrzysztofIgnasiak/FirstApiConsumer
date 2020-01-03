@@ -1,4 +1,4 @@
-﻿@model CosumeApi.Models.ViewModels.RoleViewModel
+﻿@model IEnumerable<CosumeApi.Models.BindingModels.RoleViewBindingModel>
 
 @{
     ViewBag.Title = "Roles";
@@ -6,11 +6,27 @@
 
 <h2>Roles</h2>
 
-<ul>
-@foreach (var Role in Model.Roles)
-{
-    <li>@Role.Id</li>
-    <li>@Role.Name</li>
+<p>
+    @Html.ActionLink("Create New", "CreateRole") |
+    @Html.ActionLink("Add User To Role", "AddUserToRole") |
+    @Html.ActionLink("Remove User From ROle", "Remove User From Role") |
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
 
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+        </td>
+    </tr>
 }
-</ul>
+
+</table>

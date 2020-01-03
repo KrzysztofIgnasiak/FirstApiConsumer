@@ -34,11 +34,12 @@ namespace CosumeApi.Controllers
             }
             if (response.IsSuccessStatusCode)
             {
-                TradeNoteViewModel Model = new TradeNoteViewModel();
-                Model.TradeNotes = await response.Content.ReadAsAsync<List<TradeNoteViewBindingModel>>();
+                IEnumerable<TradeNoteViewBindingModel> TradeNotes = null;
+               
+                TradeNotes = await response.Content.ReadAsAsync<List<TradeNoteViewBindingModel>>();
                // Model.Companies= await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
                 //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
-                return View(Model);
+                return View(TradeNotes);
             }
             else
             {

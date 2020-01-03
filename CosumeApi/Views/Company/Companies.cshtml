@@ -1,23 +1,72 @@
-﻿@model CosumeApi.Models.ViewModels.DisplayCompanyViewModel
+﻿@model IEnumerable<CosumeApi.Models.CompanyViewPublicModel>
 
 @{
     ViewBag.Title = "Companies";
 }
 
 <h2>Companies</h2>
-<ul>
-    @foreach (var Company in Model.Companies)
-    {
-        <li>@Company.Name</li>
-        <li>@Company.Nip</li>
-        <li>@Company.IdustryName</li>
-        <li>@Company.IndustryId</li>
-        <li>@Company.City</li>
-        <li>@Company.Address</li>
-    }
-</ul>
-@Html.ActionLink("Add", "CreateCompany") |
-@Html.ActionLink("Add IndustryType", "CreateIndustry", "IndustryController") |
-@Html.ActionLink("Get All", "Companies") |
-@Html.ActionLink("Get By Industry", "GetCompaniesByIndustryAsync") |
 
+<p>
+    @Html.ActionLink("Create New", "CreateCompany")
+    @Html.ActionLink("Add IndustryType", "CreateIndustry", "Industry") |
+    @Html.ActionLink("Get All", "Companies") |
+    @Html.ActionLink("Get By Industry", "GetCompaniesByIndustryAsync") |
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IndustryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdustryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IndustryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdustryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdateCompany", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Company", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeleteCompany", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

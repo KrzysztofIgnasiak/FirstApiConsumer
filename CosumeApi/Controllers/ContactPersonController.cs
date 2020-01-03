@@ -29,10 +29,11 @@ namespace CosumeApi.Controllers
             }
             if (response.IsSuccessStatusCode)
             {
-                ContactPeopleViewModel Model = new ContactPeopleViewModel();
-                Model.ContactPeople = await response.Content.ReadAsAsync<List<ContactPersonGetBindingModel>>();
+                IEnumerable<ContactPersonGetBindingModel> ContactPeople = null;
+         
+                ContactPeople = await response.Content.ReadAsAsync<List<ContactPersonGetBindingModel>>();
                 //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
-                return View(Model);
+                return View(ContactPeople);
             }
             else
             {
@@ -57,10 +58,11 @@ namespace CosumeApi.Controllers
             }
             if (response.IsSuccessStatusCode)
             {
-                ContactPeopleViewModel People = new ContactPeopleViewModel();
-                People.ContactPeople = await response.Content.ReadAsAsync<List<ContactPersonGetBindingModel>>();
+                IEnumerable<ContactPersonGetBindingModel> ContactPeople = null;
+               
+                ContactPeople = await response.Content.ReadAsAsync<List<ContactPersonGetBindingModel>>();
                 //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
-                return View("ContactPeople", People);
+                return View("ContactPeople", ContactPeople);
             }
             else
             {

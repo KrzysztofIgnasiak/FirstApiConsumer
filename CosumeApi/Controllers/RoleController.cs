@@ -23,10 +23,11 @@ namespace CosumeApi.Controllers
             }
             if (response.IsSuccessStatusCode)
             {
-                RoleViewModel Model = new RoleViewModel();
-                Model.Roles = await response.Content.ReadAsAsync<List<RoleViewBindingModel>>();
+                IEnumerable<RoleViewBindingModel> Roles = null;
+             
+                Roles = await response.Content.ReadAsAsync<List<RoleViewBindingModel>>();
                 //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
-                return View(Model);
+                return View(Roles);
             }
             else
             {

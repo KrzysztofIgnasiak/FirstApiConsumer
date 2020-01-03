@@ -24,10 +24,10 @@ namespace CosumeApi.Controllers
             }
             if (response.IsSuccessStatusCode)
             {
-                DisplayUserViewModel Model = new DisplayUserViewModel();
-                Model.Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
+                IEnumerable<AccountDisplayBindingModel> Users = null;
+                Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
                 //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
-                return View(Model);
+                return View(Users);
             }
             else
             {
@@ -194,7 +194,7 @@ namespace CosumeApi.Controllers
         }
 
         // GET :Account/Delete
-        public async Task<ActionResult> Delete(string Id)
+        public async Task<ActionResult> DeleteUser(string Id)
         {
             HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync("api/Account/" +Id);
             if(response.StatusCode == HttpStatusCode.Unauthorized)
@@ -212,12 +212,6 @@ namespace CosumeApi.Controllers
             }
 
         }
-        // GET: Account/About
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
+        
     }
 }

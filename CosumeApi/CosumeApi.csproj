@@ -190,7 +190,7 @@
     <Content Include="Views\Account\Users.cshtml" />
     <Content Include="Views\Shared\Unauthorized.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
-    <Content Include="Views\Company\Companies.cshtml" />
+    <Content Include="Views\Company\Companies2.cshtml" />
     <Content Include="Views\Company\Company.cshtml" />
     <Content Include="Views\Shared\SomethingWrong.cshtml" />
     <Content Include="Views\Company\CreateCompany.cshtml" />
@@ -202,17 +202,20 @@
     <Content Include="Views\ContactPerson\ContactPerson.cshtml" />
     <Content Include="Views\ContactPerson\CreateContactPerson.cshtml" />
     <Content Include="Views\ContactPerson\UpdateContactPerson.cshtml" />
-    <Content Include="Views\ContactPerson\ContactPeople.cshtml" />
+    <Content Include="Views\ContactPerson\ContactPeople2.cshtml" />
     <Content Include="Views\TradeNote\TradeNote.cshtml" />
     <Content Include="Views\Account\UpdateUser.cshtml" />
     <Content Include="Views\Account\LogIn.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Role\Roles.cshtml" />
+    <Content Include="Views\Role\Roles2.cshtml" />
     <Content Include="Views\Role\CreateRole.cshtml" />
     <Content Include="Views\Role\AddUserToRole.cshtml" />
     <Content Include="Views\Role\RemoveUserFromRole.cshtml" />
     <Content Include="Views\ContactPerson\ContactPeopleBySurnameAsync.cshtml" />
     <Content Include="Views\Company\GetCompaniesByIndustryAsync.cshtml" />
+    <Content Include="Views\Company\Companies.cshtml" />
+    <Content Include="Views\ContactPerson\ContactPeople.cshtml" />
+    <Content Include="Views\Role\Roles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

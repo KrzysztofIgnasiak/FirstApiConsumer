@@ -28,10 +28,12 @@ namespace CosumeApi.Controllers
             }
             if (response.IsSuccessStatusCode)
             {
+                IEnumerable<CompanyViewPublicModel> Companies = null;
                 DisplayCompanyViewModel Model = new DisplayCompanyViewModel();
-                Model.Companies = await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
+                //Model.Companies = await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
+                Companies = await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
                 //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
-                return View(Model);
+                return View(Companies);
             }
             else
             {

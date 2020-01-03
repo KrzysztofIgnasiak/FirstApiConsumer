@@ -1,20 +1,71 @@
-﻿@model CosumeApi.Models.ViewModels.ContactPeopleViewModel
+﻿@model IEnumerable<CosumeApi.Models.BindingModels.ContactPersonGetBindingModel>
 
 @{
     ViewBag.Title = "ContactPeople";
 }
 
 <h2>ContactPeople</h2>
-<ul>
-    @foreach (var Person in Model.ContactPeople)
-    {
-        <li>@Person.Name</li>
-        <li>@Person.Surname</li>
-        <li>@Person.Position</li>
-        <li>@Person.Phone</li>
-        <li>@Person.Mail</li>
-    }
-</ul>
-@Html.ActionLink("Add", "CreateContactPerson") |
-@Html.ActionLink("GetAll", "ContactPeople") |
-@Html.ActionLink("GetBySurname", "ContactPeopleBySurnameAsync") |
+
+<p>
+    @Html.ActionLink("Create New", "CreateContactPerson")
+    @Html.ActionLink("GetAll", "ContactPeople") |
+    @Html.ActionLink("GetBySurname", "ContactPeopleBySurnameAsync") |
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdateContactPerson", new { id=item.Id }) |
+            @Html.ActionLink("Details", "ContactPerson", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeleteContactPerson", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,14 +1,39 @@
-﻿@model CosumeApi.Models.ViewModels.TradeNoteViewModel
+﻿@model IEnumerable<CosumeApi.Models.BindingModels.TradeNoteViewBindingModel>
 
 @{
     ViewBag.Title = "TradeNotes";
 }
 
 <h2>TradeNotes</h2>
-@foreach (var TradeNote in Model.TradeNotes)
-{
-    <li>@TradeNote.Id</li>
-    <li>@TradeNote.Text</li>
-    <li>@TradeNote.UserId</li>
+
+<p>
+    @Html.ActionLink("Create New", "CreateTradeNote")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdateTradeNote", new { id=item.Id }) |
+            @Html.ActionLink("Details", "TradeNote", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeleteTradeNote", new { id=item.Id })
+        </td>
+    </tr>
 }
-@Html.ActionLink("Add", "CreateTradeNote")
+
+</table>
