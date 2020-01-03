@@ -1,7 +1,60 @@
 ﻿
+@model IEnumerable<CosumeApi.Models.AccountDisplayBindingModel>
+
 @{
-    ViewBag.Title = "UsersNormal";
+    ViewBag.Title = "Users";
 }
 
-<h2>UsersNormal</h2>
+<h2>Users</h2>
+
+<p>
+    
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameOfUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameOfUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateofBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "UpdateUser", new { id = item.Id }) |
+                @Html.ActionLink("Details", "User", new { id = item.Id }) |
+                
+            </td>
+        </tr>
+    }
+
+</table>
 
