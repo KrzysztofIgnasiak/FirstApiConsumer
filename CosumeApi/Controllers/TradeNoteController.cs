@@ -1,6 +1,5 @@
 ﻿using CosumeApi.Models;
 using CosumeApi.Models.BindingModels;
-using CosumeApi.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
