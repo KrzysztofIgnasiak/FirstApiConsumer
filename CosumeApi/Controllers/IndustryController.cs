@@ -26,7 +26,7 @@ namespace CosumeApi.Controllers
 
             if (result.IsSuccessStatusCode)
             {
-                return RedirectToAction("Companies");
+                return RedirectToAction("Companies","Company");
             }
             else
             {
