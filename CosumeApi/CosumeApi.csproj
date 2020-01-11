@@ -143,11 +143,6 @@
     <Compile Include="Models\BindingModels\UserRoleBindingModel.cs" />
     <Compile Include="Models\RedirectInfo.cs" />
     <Compile Include="Models\UserInfo.cs" />
-    <Compile Include="Models\ViewModels\ContactPeopleViewModel.cs" />
-    <Compile Include="Models\ViewModels\DisplayCompanyViewModel.cs" />
-    <Compile Include="Models\ViewModels\DisplayUserViewModel.cs" />
-    <Compile Include="Models\ViewModels\RoleViewModel.cs" />
-    <Compile Include="Models\ViewModels\TradeNoteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

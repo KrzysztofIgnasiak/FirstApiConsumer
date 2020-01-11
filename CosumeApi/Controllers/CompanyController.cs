@@ -1,6 +1,5 @@
 ﻿using CosumeApi.Models;
 using CosumeApi.Models.BindingModels;
-using CosumeApi.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,10 +28,7 @@ namespace CosumeApi.Controllers
             if (response.IsSuccessStatusCode)
             {
                 IEnumerable<CompanyViewPublicModel> Companies = null;
-                DisplayCompanyViewModel Model = new DisplayCompanyViewModel();
-                //Model.Companies = await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
                 Companies = await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
-                //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
                
                     return View(Companies);
                
@@ -84,10 +80,9 @@ namespace CosumeApi.Controllers
             }
             if (response.IsSuccessStatusCode)
             {
-                DisplayCompanyViewModel Model = new DisplayCompanyViewModel();
-                Model.Companies = await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
-                //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
-                return View("Companies",Model);
+                IEnumerable<CompanyViewPublicModel> Companies = null;
+                Companies = await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
+                return View("Companies",Companies);
             }
             else
             {
