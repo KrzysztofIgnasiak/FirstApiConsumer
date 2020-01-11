@@ -145,7 +145,7 @@ namespace CosumeApi.Controllers
         public ActionResult UpdateContactPerson(ContactPersonUpdateBindingModel ContactPerson)
         {
 
-            var putTask = ApiHelper.ApiClient.PutAsJsonAsync("api/ContactPerson/" + ContactPerson.Id.ToString(), ContactPerson);
+            var putTask = ApiHelper.ApiClient.PutAsJsonAsync<ContactPersonUpdateBindingModel>("api/ContactPerson/" + ContactPerson.Id.ToString(), ContactPerson);
             putTask.Wait();
             var result = putTask.Result;
             if (result.IsSuccessStatusCode)
