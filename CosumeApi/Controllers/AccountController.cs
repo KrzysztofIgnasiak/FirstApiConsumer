@@ -17,6 +17,7 @@ namespace CosumeApi.Controllers
         //GET : Account/Users
         public async Task<ActionResult> Users()
         {
+            PagingInfo.UserPage = 1;
             HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/Account");
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
@@ -33,7 +34,7 @@ namespace CosumeApi.Controllers
                 }
                 else
                 {
-                    return View("UsersNormal");
+                    return View("UsersNormal", Users);
                 }
                 
             }
@@ -42,6 +43,71 @@ namespace CosumeApi.Controllers
                 return View("SomethingWorng");
             } 
         }
+        public async Task<ActionResult> GoUp()
+        {
+            PagingInfo.UserPage += 1;
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/Account?pageNumber="+PagingInfo.UserPage);
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                return View("Unauthorized");
+            }
+            if (response.IsSuccessStatusCode)
+            {
+                IEnumerable<AccountDisplayBindingModel> Users = null;
+                Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
+                //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
+                if (UserInfo.IsAdmin == true)
+                {
+                    return View("Users",Users);
+                }
+                else
+                {
+                    return View("UsersNormal", Users);
+                }
+
+            }
+            else
+            {
+                return View("SomethingWorng");
+            }
+        }
+        public async Task<ActionResult> GoDown()
+        {
+            if(PagingInfo.UserPage >1)
+            {
+                PagingInfo.UserPage -= 1;
+            }
+            else
+            {
+                PagingInfo.UserPage = 1;
+            }
+            
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/Account?pageNumber=" + PagingInfo.UserPage.ToString());
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                return View("Unauthorized");
+            }
+            if (response.IsSuccessStatusCode)
+            {
+                IEnumerable<AccountDisplayBindingModel> Users = null;
+                Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
+                //Users = await response.Content.ReadAsAsync<List<AccountDisplayBindingModel>>();
+                if (UserInfo.IsAdmin == true)
+                {
+                    return View("Users", Users);
+                }
+                else
+                {
+                    return View("UsersNormal", Users);
+                }
+
+            }
+            else
+            {
+                return View("SomethingWorng");
+            }
+        }
+
 
         // GET: Account/User
         public async Task<ActionResult> User(string Id)

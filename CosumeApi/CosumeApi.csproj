@@ -141,6 +141,7 @@
     <Compile Include="Models\BindingModels\RoleBindingModel.cs" />
     <Compile Include="Models\BindingModels\TradeNoteBindingModel.cs" />
     <Compile Include="Models\BindingModels\UserRoleBindingModel.cs" />
+    <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\RedirectInfo.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

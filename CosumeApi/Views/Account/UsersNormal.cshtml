@@ -8,7 +8,10 @@
 <h2>Users</h2>
 
 <p>
-    
+<p>
+    @Html.ActionLink("Next Page", "GoUp") |
+    @Html.ActionLink("Previous Page", "GoDown") |
+</p>
 </p>
 <table class="table">
     <tr>
@@ -51,7 +54,7 @@
             <td>
                 @Html.ActionLink("Edit", "UpdateUser", new { id = item.Id }) |
                 @Html.ActionLink("Details", "User", new { id = item.Id }) |
-                
+
             </td>
         </tr>
     }
