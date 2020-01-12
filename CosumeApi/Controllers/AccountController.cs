@@ -258,7 +258,7 @@ namespace CosumeApi.Controllers
             if (result.IsSuccessStatusCode)
             {
 
-                return RedirectToAction("Users");
+                return RedirectToAction("LogIn");
             }
             else
             {
