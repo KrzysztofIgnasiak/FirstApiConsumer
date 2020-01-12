@@ -16,6 +16,7 @@ namespace CosumeApi.Controllers
         // GET: Company
         public async Task<ActionResult> Companies()
         {
+            PagingInfo.CompanyPage = 1;
             HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/Company");
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
@@ -39,6 +40,68 @@ namespace CosumeApi.Controllers
                 return View("SomethingWrong");
             }
         }
+
+        public async Task<ActionResult> GoUp()
+        {
+            PagingInfo.CompanyPage += 1;
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/Company?pageNumber=" + PagingInfo.CompanyPage);
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                return View("Unauthorized");
+            }
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                return View("NotFound");
+            }
+            if (response.IsSuccessStatusCode)
+            {
+                IEnumerable<CompanyViewPublicModel> Companies = null;
+                Companies = await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
+
+                return View("Companies", Companies);
+
+
+            }
+            else
+            {
+                return View("SomethingWrong");
+            }
+        }
+
+        public async Task<ActionResult> GoDown()
+        {
+            if(PagingInfo.CompanyPage >1)
+            {
+                PagingInfo.CompanyPage -= 1;
+            }
+            else
+            {
+                PagingInfo.CompanyPage = 1;
+            }
+            HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync("api/Company");
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                return View("Unauthorized");
+            }
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                return View("NotFound");
+            }
+            if (response.IsSuccessStatusCode)
+            {
+                IEnumerable<CompanyViewPublicModel> Companies = null;
+                Companies = await response.Content.ReadAsAsync<List<CompanyViewPublicModel>>();
+
+                return View("Companies", Companies);
+
+
+            }
+            else
+            {
+                return View("SomethingWrong");
+            }
+        }
+
         // GET: Company/1
         public async Task<ActionResult> Company(int Id)
         {
