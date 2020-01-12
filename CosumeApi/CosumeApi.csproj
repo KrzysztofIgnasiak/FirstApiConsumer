@@ -186,7 +186,6 @@
     <Content Include="Views\Account\Users.cshtml" />
     <Content Include="Views\Shared\Unauthorized.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
-    <Content Include="Views\Company\CompaniesNormal.cshtml" />
     <Content Include="Views\Company\Company.cshtml" />
     <Content Include="Views\Shared\SomethingWrong.cshtml" />
     <Content Include="Views\Company\CreateCompany.cshtml" />
@@ -198,7 +197,6 @@
     <Content Include="Views\ContactPerson\ContactPerson.cshtml" />
     <Content Include="Views\ContactPerson\CreateContactPerson.cshtml" />
     <Content Include="Views\ContactPerson\UpdateContactPerson.cshtml" />
-    <Content Include="Views\ContactPerson\ContactPeopleNormal.cshtml" />
     <Content Include="Views\TradeNote\TradeNote.cshtml" />
     <Content Include="Views\Account\UpdateUser.cshtml" />
     <Content Include="Views\Account\LogIn.cshtml" />
