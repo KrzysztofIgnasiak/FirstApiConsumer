@@ -243,7 +243,7 @@ namespace CosumeApi.Controllers
         {
             var content = new FormUrlEncodedContent(new[]
            {
-                 new KeyValuePair<string, string>("username", NewUser.UserName),
+                 new KeyValuePair<string, string>("UserName", NewUser.UserName),
                  new KeyValuePair<string, string>("NameOfUser", NewUser.NameOfUser),
                  new KeyValuePair<string, string>("Password", NewUser.Password),
                  new KeyValuePair<string, string>("ConfirmPassword", NewUser.ConfirmPasword),
